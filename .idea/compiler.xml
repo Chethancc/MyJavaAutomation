@@ -9,5 +9,8 @@
         <module name="SeleniumCompleteAutomation" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="main" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>
