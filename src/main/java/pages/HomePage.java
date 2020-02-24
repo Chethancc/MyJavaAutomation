@@ -1,4 +1,6 @@
 package pages;
 
-public class HomePage {
+import common.ElementProvider;
+
+public class HomePage extends ElementProvider{
 }

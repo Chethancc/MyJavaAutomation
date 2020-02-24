@@ -2,6 +2,9 @@ package fileReaders;
 
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.*;
 import java.util.HashMap;
 import java.util.List;
@@ -10,7 +13,7 @@ import java.util.Map;
 public class CsvReader {
 
 
-    //Logger log = LoggerFactory.getLogger(CsvReader.class);
+    Logger log = LoggerFactory.getLogger(CsvReader.class);
 
     public List<String []> readFileData(String filePath){
         List<String[]> allData = null;
@@ -21,7 +24,8 @@ public class CsvReader {
 
         }catch (FileNotFoundException fne)
         {
-           //log.error("File Not Found , Please Check the File Path");
+            System.out.println("Not File Found");
+           log.error("File Not Found , Please Check the File Path");
         }catch (IOException io)
         {
             //log.error("File not able to load , Check the format of the file");
@@ -61,9 +65,4 @@ public class CsvReader {
           return rowNumber;
     }
 
-    public static void main(String[] args) {
-        CsvReader csvReader = new CsvReader();
-        Map<String ,String> myMap =csvReader.getData("/Users/chethanc/Documents/ChethanProject/MyJavaAutomation/src/main/java/TestData/Data.csv","Profile3");
-        System.out.println(myMap);
-    }
 }

@@ -1,4 +1,14 @@
 package common;
 
-public class TestDataProvider {
+import org.testng.annotations.BeforeTest;
+
+public class TestDataProvider extends ElementProvider{
+
+    @BeforeTest
+    public void preSetUp()
+    {
+       setWebDriver();
+    }
 }
+
+
