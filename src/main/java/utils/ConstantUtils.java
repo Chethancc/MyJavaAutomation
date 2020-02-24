@@ -14,4 +14,5 @@ public class ConstantUtils
     public static String ieBrowser = "IE";
     public static String suiteFilePath = "";
     public static String browserKey = "browser";
+    public static String urlKey = "baseUrl";
 }
