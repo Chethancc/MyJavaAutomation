@@ -1,19 +1,25 @@
 package common;
 
 import fileReaders.PropertiesReader;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import utils.ConstantUtils;
 
 public class WebDriverSetUp {
 WebDriver driver;
+
+
+static final Logger log = Logger.getLogger(WebDriverSetUp.class);
     public WebDriver setWebDriver(){
-        PropertiesReader propertiesReader = new PropertiesReader();
-        System.out.println(System.getProperty("browser"));
-        if(System.getProperty("browser").equalsIgnoreCase("Chrome")){
-            System.setProperty("webdriver.chrome.driver", "/Users/chethanc/Documents/ChethanProject/MyJavaAutomation/src/test/drivers/chromedriver");
+        readProperties();
+        if(System.getProperty(ConstantUtils.browserKey).equalsIgnoreCase(ConstantUtils.chromeBrowser)){
+            log.debug("Setting up chrome Driver");
+            System.setProperty(ConstantUtils.chromeProperties, ConstantUtils.propertyFilePath);
             driver = new ChromeDriver();
-        }else if(System.getProperty("browser").equalsIgnoreCase("FireFox")){
+        }else if(System.getProperty(ConstantUtils.browserKey).equalsIgnoreCase(ConstantUtils.fireFoxBrowser)){
+            log.debug("Setting up FireFox Driver");
             driver = new FirefoxDriver();
         }
         return driver;
@@ -41,6 +47,12 @@ WebDriver driver;
     public void switchToPreviousTab(){
 
     }
+    public void readProperties()
+    {
+        PropertiesReader propertiesReader = new PropertiesReader();
+    }
+
+
 
 
 }

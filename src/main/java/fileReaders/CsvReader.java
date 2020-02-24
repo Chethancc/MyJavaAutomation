@@ -2,8 +2,8 @@ package fileReaders;
 
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
+
 
 import java.io.*;
 import java.util.HashMap;
@@ -13,7 +13,7 @@ import java.util.Map;
 public class CsvReader {
 
 
-    Logger log = LoggerFactory.getLogger(CsvReader.class);
+    Logger log = Logger.getLogger(CsvReader.class);
 
     public List<String []> readFileData(String filePath){
         List<String[]> allData = null;
@@ -21,6 +21,8 @@ public class CsvReader {
             FileReader fileReader = new FileReader(new File(filePath));
             CSVReader csvReader = new CSVReader(fileReader);
             allData =  csvReader.readAll();
+            log.debug("Found the file");
+
 
         }catch (FileNotFoundException fne)
         {

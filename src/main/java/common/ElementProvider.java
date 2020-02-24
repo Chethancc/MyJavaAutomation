@@ -12,10 +12,16 @@ public class ElementProvider extends WebDriverSetUp {
 
     }
 
-    
+
 
     public String getText(WebElement element){
         return null;
+    }
+
+    public void enterData(String data,WebElement element){
+        if(element.isDisplayed()){
+            element.sendKeys(data);
+        }
     }
 
 
