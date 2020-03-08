@@ -3,6 +3,7 @@ package common;
 import fileReaders.PropertiesReader;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -12,10 +13,11 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import utils.ConstantUtils;
 
 public class WebDriverSetUp {
-WebDriver driver;
+    public WebDriver driver;
 
 
 static final Logger log = Logger.getLogger(WebDriverSetUp.class);
+
     public WebDriver setWebDriver(){
         readProperties();
         if(System.getProperty(ConstantUtils.browserKey).equalsIgnoreCase(ConstantUtils.chromeBrowser)){
@@ -32,7 +34,7 @@ static final Logger log = Logger.getLogger(WebDriverSetUp.class);
         return driver;
     }
 
-    public WebDriver getDriver(){
+    public  WebDriver getDriver(){
         if (this.driver == null){
            driver = setWebDriver();
         }
@@ -47,34 +49,8 @@ static final Logger log = Logger.getLogger(WebDriverSetUp.class);
         this.driver.quit();
     }
 
-    public void switchToNewTab(){
-
-    }
-
-    public void switchToPreviousTab(){
-
-    }
     public void readProperties()
     {
         PropertiesReader propertiesReader = new PropertiesReader();
     }
-
-    public void acceptAlert(){
-        driver.switchTo().alert().accept();
-    }
-
-    public void dismissAlert(){
-        driver.switchTo().alert().dismiss();
-    }
-
-    public void contextClick(){
-        getActions().contextClick();
-    }
-
-    public Actions getActions(){
-        Actions actions = new Actions(driver);
-        return actions;
-    }
-
-
 }
